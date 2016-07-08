@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using Litmus.Entities;
 using Litmus.Services;
-using Microsoft.AspNet.Mvc;
+using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 

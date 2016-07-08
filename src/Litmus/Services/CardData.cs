@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Litmus.Entities;
 
+
 namespace Litmus.Services
 {
     public interface ICardData

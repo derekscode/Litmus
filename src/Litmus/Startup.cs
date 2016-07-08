@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Litmus.Entities;
+﻿using Litmus.Entities;
 using Litmus.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace Litmus
 {
@@ -38,9 +35,11 @@ namespace Litmus
                    options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
                });
             services.AddCors();
-            services.AddEntityFramework()
-                    .AddSqlServer()
-                    .AddDbContext<LitmusDbContext>(options => options.UseSqlServer(Configuration["database:connection"]));
+
+            services.AddDbContext<LitmusDbContext>(options => options.UseSqlServer(Configuration["database:connection"]));
+            //services.AddEntityFramework();
+                    //.AddSqlServer()
+                    //.AddDbContext<LitmusDbContext>(options => options.UseSqlServer(Configuration["database:connection"]));
 
             services.AddSingleton(provider => Configuration);
 
