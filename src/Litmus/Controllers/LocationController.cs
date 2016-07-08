@@ -2,7 +2,7 @@
 using System.Linq;
 using Litmus.Entities;
 using Litmus.Services;
-using Microsoft.AspNet.Mvc;
+using Microsoft.AspNetCore.Mvc;
 
 
 namespace Litmus.Controllers

@@ -92,7 +92,7 @@ namespace Litmus.Controllers
         {
             if (updatedCard == null || updatedCard.Id != id)
             {
-                return HttpBadRequest();
+                return BadRequest();
             }
 
             Card oldCard = _cardData.Get(id).ShallowCopy();
