@@ -1,6 +1,7 @@
 ﻿using Litmus.Entities;
 using Litmus.Services;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -37,9 +38,6 @@ namespace Litmus
             services.AddCors();
 
             services.AddDbContext<LitmusDbContext>(options => options.UseSqlServer(Configuration["database:connection"]));
-            //services.AddEntityFramework();
-                    //.AddSqlServer()
-                    //.AddDbContext<LitmusDbContext>(options => options.UseSqlServer(Configuration["database:connection"]));
 
             services.AddSingleton(provider => Configuration);
 
