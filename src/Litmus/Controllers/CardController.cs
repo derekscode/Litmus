@@ -28,10 +28,14 @@ namespace Litmus.Controllers
         [HttpGet("UserIsAdmin")]
         public bool UserIsAdmin()
         {
+            
             var groups = ActiveDirectory.GetGroups();
-            bool test = User.IsInRole(ActiveDirectory.User);
 
-            bool userIsAdmin = User.IsInRole(ActiveDirectory.Admin);
+            // if userIsUser and userIsAdmin are false, then: Stop solution, Clean, Rebuild, Run again
+            bool userIsUser = User.IsInRole(@"CORP\ecoATM Litmus User");
+            bool userIsAdmin = User.IsInRole(@"CORP\ecoATM Litmus Admin");
+            bool shouldBeFalse = User.IsInRole(@"CORP\Fake Group");
+            
             return userIsAdmin;
         }
 

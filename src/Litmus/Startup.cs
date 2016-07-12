@@ -43,6 +43,7 @@ namespace Litmus
 
             services.AddScoped<ICardData, SqlCardData>();
             services.AddScoped<ILogData, SqlLogData>();
+            services.AddScoped<ILocationData, LocationData>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
