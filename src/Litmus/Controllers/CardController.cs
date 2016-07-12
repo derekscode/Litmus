@@ -37,7 +37,7 @@ namespace Litmus.Controllers
 
         // GET: api/card
         [HttpGet]
-        [Authorize(Roles = ActiveDirectory.User)]
+        //[Authorize(Roles = ActiveDirectory.User)]
         public Card[] Get()
         {
             var cards = _cardData.GetAll().ToList();
