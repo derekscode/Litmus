@@ -28,13 +28,10 @@ namespace Litmus.Controllers
         [HttpGet("UserIsAdmin")]
         public bool UserIsAdmin()
         {
-            
-            var groups = ActiveDirectory.GetGroups();
-
             // if userIsUser and userIsAdmin are false, then: Stop solution, Clean, Rebuild, Run again
-            bool userIsUser = User.IsInRole(@"CORP\ecoATM Litmus User");
-            bool userIsAdmin = User.IsInRole(@"CORP\ecoATM Litmus Admin");
-            bool shouldBeFalse = User.IsInRole(@"CORP\Fake Group");
+            //bool userIsUser = User.IsInRole(@"CORP\ecoATM Litmus User");
+            bool userIsAdmin = HttpContext.User.IsInRole(@"CORP\ecoATM Litmus Admin");
+            //bool shouldBeFalse = User.IsInRole(@"CORP\Fake Group");
             
             return userIsAdmin;
         }
@@ -89,7 +86,7 @@ namespace Litmus.Controllers
         }
 
         // PUT api/card/1
-        [Authorize(Roles = ActiveDirectory.Admin)]
+        //[Authorize(Roles = ActiveDirectory.Admin)]
         [HttpPut("{id}")]
         public ActionResult Update(int id, [FromBody] Card updatedCard)
         {
@@ -110,7 +107,7 @@ namespace Litmus.Controllers
         }
 
         //DELETE api/card/1
-        [Authorize(Roles = ActiveDirectory.Admin)]
+        //[Authorize(Roles = ActiveDirectory.Admin)]
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
