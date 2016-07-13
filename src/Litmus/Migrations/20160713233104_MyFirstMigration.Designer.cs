@@ -8,7 +8,7 @@ using Litmus.Entities;
 namespace Litmus.Migrations
 {
     [DbContext(typeof(LitmusDbContext))]
-    [Migration("20160708235517_MyFirstMigration")]
+    [Migration("20160713233104_MyFirstMigration")]
     partial class MyFirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
