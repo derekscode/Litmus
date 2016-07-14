@@ -32,13 +32,12 @@ namespace Litmus.Controllers
             //bool userIsUser = User.IsInRole(@"CORP\ecoATM Litmus User");
             bool userIsAdmin = HttpContext.User.IsInRole(@"CORP\ecoATM Litmus Admin");
             //bool shouldBeFalse = User.IsInRole(@"CORP\Fake Group");
-            
             return userIsAdmin;
         }
 
         // GET: api/card
         [HttpGet]
-        //[Authorize(Roles = ActiveDirectory.User)]
+        [Authorize(Roles = @"CORP\ecoATM Litmus User")]
         public Card[] Get()
         {
             var cards = _cardData.GetAll().ToList();
@@ -59,7 +58,6 @@ namespace Litmus.Controllers
         }
 
         // POST api/card
-        //[Authorize(Roles = ActiveDirectory.Admin)]
         [HttpPost]
         public IActionResult Create([FromBody] Card card)
         {
@@ -86,7 +84,6 @@ namespace Litmus.Controllers
         }
 
         // PUT api/card/1
-        //[Authorize(Roles = ActiveDirectory.Admin)]
         [HttpPut("{id}")]
         public ActionResult Update(int id, [FromBody] Card updatedCard)
         {
